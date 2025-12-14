@@ -46,12 +46,11 @@ Let's start up our development environment, use copilot to learn a bit about the
 
 1. Wait a moment for Visual Studio Code to load in your browser.
 
-1. In the left sidebar, click the extensions tab and verify that the `GitHub Copilot` and `C# Dev Kit` extensions are installed and enabled.
+1. In the left sidebar, click the extensions tab and verify that the `GitHub Copilot Chat` and `C# Dev Kit` extensions are installed and enabled.
 
-   <img width="350" alt="copilot extension for VS Code" src="https://github.com/user-attachments/assets/ef1ef984-17fc-4b20-a9a6-65a866def468" />
-
-   <img width="350" alt="C# Dev Kit extension for VS Code" src="https://github.com/user-attachments/assets/3040c0f5-1658-47e2-a439-20504a384f77" />
-
+   <img width="350" alt="copilit extension" src="https://github.com/user-attachments/assets/e6cb21ad-5c87-40f5-8d70-7e5a9f73dfc1" />
+   
+   <img width="350" alt="C# Dev Kit extension for VS Code" src="https://github.com/user-attachments/assets/58d63625-5277-4f5f-972f-afae9a3380c3" />
 1. At the top of VS Code, locate and click the **Toggle Chat icon** to open a Copilot Chat side panel.
 
    <img width="150" alt="image" src="https://github.com/user-attachments/assets/abf584e9-ef68-4725-8b22-4803805e6d55" />
