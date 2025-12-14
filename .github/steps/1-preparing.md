@@ -46,11 +46,11 @@ Let's start up our development environment, use copilot to learn a bit about the
 
 1. Wait a moment for Visual Studio Code to load in your browser.
 
-1. In the left sidebar, click the extensions tab and verify that the `GitHub Copilot` and `Python` extensions are installed and enabled.
+1. In the left sidebar, click the extensions tab and verify that the `GitHub Copilot` and `C# Dev Kit` extensions are installed and enabled.
 
    <img width="350" alt="copilot extension for VS Code" src="https://github.com/user-attachments/assets/ef1ef984-17fc-4b20-a9a6-65a866def468" />
 
-   <img width="350" alt="python extension for VS Code" src="https://github.com/user-attachments/assets/3040c0f5-1658-47e2-a439-20504a384f77" />
+   <img width="350" alt="C# Dev Kit extension for VS Code" src="https://github.com/user-attachments/assets/3040c0f5-1658-47e2-a439-20504a384f77" />
 
 1. At the top of VS Code, locate and click the **Toggle Chat icon** to open a Copilot Chat side panel.
 
@@ -80,13 +80,13 @@ Let's start up our development environment, use copilot to learn a bit about the
 
    </details>
 
-1. Now that we know a bit more about the project, let's actually try running it! In the left sidebar, select the `Run and Debug` tab and then press the **Start Debugging** icon.
+1. Now that we know a bit more about the project, let's actually try running it! In the left sidebar, select the `Run and Debug` tab and then select **Launch Mergington WebApp** from the dropdown, then press the **Start Debugging** icon.
 
    <img width="300" alt="image" src="https://github.com/user-attachments/assets/50b27f2a-5eab-4827-9343-ab5bce62357e" />
 
 1. We want to see our webpage running in a browser, so let's find the url and port. If it isn't visible, expand the lower panel and select the **Ports** tab.
 
-1. In the list, find port `8000` and the related link. Hover over the link and select the **Open in browser** icon.
+1. In the list, find port `5000` and the related link. Hover over the link and select the **Open in browser** icon.
 
    ![image](https://github.com/user-attachments/assets/92d5642e-ce99-4a66-850c-2d311a673596)
 

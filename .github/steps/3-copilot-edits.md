@@ -41,9 +41,8 @@ Let's use Copilot to change the website to display signed up students under each
 
 1. Open the files related to our webpage then drag each editor window (or file) to the chat panel, informing Copilot to use them as context.
 
-   - `src/static/app.js`
-   - `src/static/index.html`
-   - `src/static/styles.css`
+   - `src/client-app/src/App.js`
+   - `src/client-app/src/App.css`
 
    <img width="400" alt="image showing files added to context" src="https://github.com/user-attachments/assets/8026a86b-b350-4b98-bf4f-764b61d157e7" />
 
@@ -97,7 +96,7 @@ Let's use Copilot to change the website to display signed up students under each
 
 If you don't get feedback, here are some things to check:
 
-- Make sure your commit the changes in the `src/static/` directory to the branch `accelerate-with-copilot` and pushed/synchronized to GitHub.
+- Make sure your commit the changes in the `src/client-app/src/` directory to the branch `accelerate-with-copilot` and pushed/synchronized to GitHub.
 - If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
 
 </details>
