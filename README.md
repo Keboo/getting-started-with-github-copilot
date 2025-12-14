@@ -6,11 +6,12 @@ _Get started using GitHub Copilot in less than an hour._
 
 - **Who is this for**: Developers at any experience level looking to accelerate their code workflow.
 - **What you'll learn**: The different ways to interact with Copilot to explain, write, debug, and develop code.
-- **What you'll build**: You will guide Copilot to update Mergington High School's extracurricular activities website.
+- **What you'll build**: You will guide Copilot to update Mergington High School's extracurricular activities website built with ASP.NET Core and React.
 - **Prerequisites**:
   - Skills exercise: [Introduction to GitHub](https://github.com/skills/introduction-to-github)
   - Familiarity with [VS Code](https://code.visualstudio.com/)
   - Basic coding principles
+  - Basic understanding of C# and React is helpful but not required
 - **How long**: This exercise takes less than one hour to complete.
 
 In this exercise, you will:

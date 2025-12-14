@@ -33,18 +33,18 @@ In short, you can think of Copilot like a very specialized coworker. To be effec
    > Where could this bug be coming from?
    > ```
 
-1. Now that we know the issue is in the `src/app.py` file and the `signup_for_activity` method, let's follow Copilot's recommendation and go fix it (semi-manually). We'll start with a comment and let Copilot finish the correction.
+1. Now that we know the issue is in the `src/Program.cs` file and the `signup` endpoint, let's follow Copilot's recommendation and go fix it (semi-manually). We'll start with a comment and let Copilot finish the correction.
 
-   1. In VS Code, select the file **Explorer tab** to show the project files and open the `src/app.py` file.
+   1. In VS Code, select the file **Explorer tab** to show the project files and open the `src/Program.cs` file.
 
-   1. Scroll near the bottom of the file and find the `signup_for_activity` method.
+   1. Scroll near the bottom of the file and find the `/api/activities/{activityName}/signup` endpoint.
 
    1. Find the comment line that describes adding a student. Above this is where it seems logical to do our registration check.
 
    1. Enter the below comment and press enter to go to the next line. After a moment, temporary shadow text will appear with a suggestion from Copilot! Nice! :tada:
 
-      ```python
-      # Validate student is not already signed up
+      ```csharp
+      // Validate student is not already signed up
       ```
 
    1. Press `Tab` to accept Copilot's suggestion and convert the shadow text to code.
@@ -54,24 +54,28 @@ In short, you can think of Copilot like a very specialized coworker. To be effec
 
    Copilot is growing every day and may not always produce the same results. If you are unhappy with the suggestions, here is an example of a valid suggestion result we produced during the making of this exercise. You can use it to continue forward.
 
-   ```python
-   @app.post("/activities/{activity_name}/signup")
-   def signup_for_activity(activity_name: str, email: str):
-      """Sign up a student for an activity"""
-      # Validate activity exists
-      if activity_name not in activities:
-         raise HTTPException(status_code=404, detail="Activity not found")
+   ```csharp
+   app.MapPost("/api/activities/{activityName}/signup", (string activityName, SignupRequest request) =>
+   {
+       // Validate activity exists
+       if (!activities.ContainsKey(activityName))
+       {
+           return Results.NotFound(new { detail = "Activity not found" });
+       }
 
-      # Get the activity
-      activity = activities[activity_name]
+       var activity = activities[activityName];
 
-      # Validate student is not already signed up
-      if email in activity["participants"]:
-        raise HTTPException(status_code=400, detail="Student is already signed up")
+       // Validate student is not already signed up
+       if (activity.Participants.Contains(request.Email))
+       {
+           return Results.BadRequest(new { detail = "Student is already signed up" });
+       }
 
-      # Add student
-      activity["participants"].append(email)
-      return {"message": f"Signed up {email} for {activity_name}"}
+       // Add student
+       activity.Participants.Add(request.Email);
+       return Results.Ok(new { message = $"Signed up {request.Email} for {activityName}" });
+   })
+       .WithName("SignupForActivity");
    ```
 
    </details>
@@ -82,7 +86,7 @@ In new project developments, it's often helpful to have some realistic looking f
 
 **Inline Chat** and the **Copilot Chat** panel are similar, but differ in scope: Copilot Chat handles broader, multi-file or exploratory questions; Inline Chat is faster when you want targeted help on the exact line or block in front of you.
 
-1. Near the top of the `src/app.py` file (about line 23), find the `activities` variable, where our example extracurricular activities are configured.
+1. Near the top of the `src/Program.cs` file (around line 38), find the `activities` variable, where our example extracurricular activities are configured.
 
 1. Click on any of the related lines and bring up Copilot inline chat by using the keyboard command `Ctrl + I` (windows) or `Cmd + I` (mac).
 
@@ -104,64 +108,74 @@ In new project developments, it's often helpful to have some realistic looking f
 
    Copilot is growing every day and may not always produce the same results. If you are unhappy with the suggestions, here is an example result we produced during the making of this exercise. You can use it to continue forward, if having trouble.
 
-   ```python
-   # In-memory activity database
-   activities = {
-      "Chess Club": {
-         "description": "Learn strategies and compete in chess tournaments",
-         "schedule": "Fridays, 3:30 PM - 5:00 PM",
-         "max_participants": 12,
-         "participants": ["michael@mergington.edu", "daniel@mergington.edu"]
-      },
-      "Programming Class": {
-         "description": "Learn programming fundamentals and build software projects",
-         "schedule": "Tuesdays and Thursdays, 3:30 PM - 4:30 PM",
-         "max_participants": 20,
-         "participants": ["emma@mergington.edu", "sophia@mergington.edu"]
-      },
-      "Gym Class": {
-         "description": "Physical education and sports activities",
-         "schedule": "Mondays, Wednesdays, Fridays, 2:00 PM - 3:00 PM",
-         "max_participants": 30,
-         "participants": ["john@mergington.edu", "olivia@mergington.edu"]
-      },
-      "Basketball Team": {
-         "description": "Competitive basketball training and games",
-         "schedule": "Tuesdays and Thursdays, 4:00 PM - 6:00 PM",
-         "max_participants": 15,
-         "participants": []
-      },
-      "Swimming Club": {
-         "description": "Swimming training and water sports",
-         "schedule": "Mondays and Wednesdays, 3:30 PM - 5:00 PM",
-         "max_participants": 20,
-         "participants": []
-      },
-      "Art Studio": {
-         "description": "Express creativity through painting and drawing",
-         "schedule": "Wednesdays, 3:30 PM - 5:00 PM",
-         "max_participants": 15,
-         "participants": []
-      },
-      "Drama Club": {
-         "description": "Theater arts and performance training",
-         "schedule": "Tuesdays, 4:00 PM - 6:00 PM",
-         "max_participants": 25,
-         "participants": []
-      },
-      "Debate Team": {
-         "description": "Learn public speaking and argumentation skills",
-         "schedule": "Thursdays, 3:30 PM - 5:00 PM",
-         "max_participants": 16,
-         "participants": []
-      },
-      "Science Club": {
-         "description": "Hands-on experiments and scientific exploration",
-         "schedule": "Fridays, 3:30 PM - 5:00 PM",
-         "max_participants": 20,
-         "participants": []
-      }
-   }
+   ```csharp
+   // In-memory activity database
+   var activities = new Dictionary<string, Activity>
+   {
+       ["Chess Club"] = new Activity
+       {
+           Description = "Learn strategies and compete in chess tournaments",
+           Schedule = "Fridays, 3:30 PM - 5:00 PM",
+           MaxParticipants = 12,
+           Participants = new List<string> { "michael@mergington.edu", "daniel@mergington.edu" }
+       },
+       ["Programming Class"] = new Activity
+       {
+           Description = "Learn programming fundamentals and build software projects",
+           Schedule = "Tuesdays and Thursdays, 3:30 PM - 4:30 PM",
+           MaxParticipants = 20,
+           Participants = new List<string> { "emma@mergington.edu", "sophia@mergington.edu" }
+       },
+       ["Gym Class"] = new Activity
+       {
+           Description = "Physical education and sports activities",
+           Schedule = "Mondays, Wednesdays, Fridays, 2:00 PM - 3:00 PM",
+           MaxParticipants = 30,
+           Participants = new List<string> { "john@mergington.edu", "olivia@mergington.edu" }
+       },
+       ["Basketball Team"] = new Activity
+       {
+           Description = "Competitive basketball training and games",
+           Schedule = "Tuesdays and Thursdays, 4:00 PM - 6:00 PM",
+           MaxParticipants = 15,
+           Participants = new List<string>()
+       },
+       ["Swimming Club"] = new Activity
+       {
+           Description = "Swimming training and water sports",
+           Schedule = "Mondays and Wednesdays, 3:30 PM - 5:00 PM",
+           MaxParticipants = 20,
+           Participants = new List<string>()
+       },
+       ["Art Studio"] = new Activity
+       {
+           Description = "Express creativity through painting and drawing",
+           Schedule = "Wednesdays, 3:30 PM - 5:00 PM",
+           MaxParticipants = 15,
+           Participants = new List<string>()
+       },
+       ["Drama Club"] = new Activity
+       {
+           Description = "Theater arts and performance training",
+           Schedule = "Tuesdays, 4:00 PM - 6:00 PM",
+           MaxParticipants = 25,
+           Participants = new List<string>()
+       },
+       ["Debate Team"] = new Activity
+       {
+           Description = "Learn public speaking and argumentation skills",
+           Schedule = "Thursdays, 3:30 PM - 5:00 PM",
+           MaxParticipants = 16,
+           Participants = new List<string>()
+       },
+       ["Science Club"] = new Activity
+       {
+           Description = "Hands-on experiments and scientific exploration",
+           Schedule = "Fridays, 3:30 PM - 5:00 PM",
+           MaxParticipants = 20,
+           Participants = new List<string>()
+       }
+   };
    ```
 
    </details>
@@ -174,7 +188,7 @@ Nice work fixing that bug and expanding the example activities! Now let's get ou
 
    > 💡 **Tip:** Opening a file from the source control area will show the differences to the original rather than simply opening it.
 
-1. Find the `app.py` file and press the `+` sign to collect your changes together in the staging area.
+1. Find the `Program.cs` file and press the `+` sign to collect your changes together in the staging area.
 
    ![image](https://github.com/user-attachments/assets/7d3daf4e-4125-4775-88a7-33251cd7293e)
 
@@ -193,6 +207,6 @@ Nice work fixing that bug and expanding the example activities! Now let's get ou
 
 If you don't get feedback, here are some things to check:
 
-- Make sure your pushed the `src/app.py` file changes to the branch `accelerate-with-copilot`.
+- Make sure your pushed the `src/Program.cs` file changes to the branch `accelerate-with-copilot`.
 
 </details>

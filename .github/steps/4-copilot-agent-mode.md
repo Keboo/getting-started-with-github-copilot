@@ -82,8 +82,8 @@ Your backend is now feature‑rich—but still has zero test coverage. Use Copil
    > ![Static Badge](https://img.shields.io/badge/-Prompt-placeholder?style=social&logo=github%20copilot)
    >
    > ```prompt
-   > Add fastapi tests using pytest in a new tests directory and run them.
-   > Make sure to add any new dependencies to requirements.txt
+   > Add xUnit tests for the ASP.NET Core API in a new tests directory and run them.
+   > Make sure to add any new dependencies to the project file.
    > ```
 
 1. As Copilot works on your prompt, different tools might need your approval.
