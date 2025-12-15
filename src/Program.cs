@@ -2,12 +2,6 @@ using MergingtonHighSchool.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure Kestrel to listen on port 5000
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.Listen(System.Net.IPAddress.Any, 5000);
-});
-
 // Add services to the container.
 builder.Services.AddCors(options =>
 {
@@ -30,27 +24,19 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
+app.UseDefaultFiles();
+app.MapStaticAssets();
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 
+app.UseHttpsRedirection();
+
 app.UseCors();
-
-// Serve static files from wwwroot
-app.UseDefaultFiles();
-app.UseStaticFiles();
-
-// Use SPA proxy in development - automatically launches Vite dev server
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-    app.UseSpa(spa =>
-    {
-        spa.Options.SourcePath = "client-app";
-    });
-}
 
 // In-memory activity database
 var activities = new Dictionary<string, Activity>
