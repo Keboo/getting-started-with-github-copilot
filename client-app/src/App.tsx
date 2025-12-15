@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { Input } from '@progress/kendo-react-inputs';
+import { DropDownList } from '@progress/kendo-react-dropdowns';
+import { Button } from '@progress/kendo-react-buttons';
+import '@progress/kendo-theme-default/dist/all.css';
 
 interface Activity {
   [key: string]: {
@@ -100,34 +104,34 @@ function App() {
           <form className="signup-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="email">Student Email:</label>
-              <input
+              <Input
                 type="email"
                 id="email"
-                className="k-input"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setEmail(String(e.target.value || ''))}
                 required
                 placeholder="your-email@mergington.edu"
+                style={{ width: '100%' }}
               />
             </div>
             <div className="form-group">
               <label htmlFor="activity">Select Activity:</label>
-              <select
-                id="activity"
-                className="k-dropdown"
+              <DropDownList
+                data={Object.keys(activities)}
                 value={selectedActivity}
-                onChange={(e) => setSelectedActivity(e.target.value)}
-                required
-              >
-                <option value="">-- Select an activity --</option>
-                {Object.keys(activities).map((name) => (
-                  <option key={name} value={name}>
-                    {name}
-                  </option>
-                ))}
-              </select>
+                onChange={(e) => setSelectedActivity(e.value)}
+                defaultItem="-- Select an activity --"
+                style={{ width: '100%' }}
+              />
             </div>
-            <button type="submit">Sign Up</button>
+            <Button 
+              themeColor="primary" 
+              type="submit"
+              disabled={!email || !selectedActivity}
+              style={{ width: '100%', marginTop: '1rem' }}
+            >
+              Sign Up
+            </Button>
           </form>
           {message && (
             <div className={`message ${message.type}`}>
