@@ -19,6 +19,12 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Configure JSON serialization to use camelCase
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+});
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -35,6 +41,16 @@ app.UseCors();
 // Serve static files from wwwroot
 app.UseDefaultFiles();
 app.UseStaticFiles();
+
+// Use SPA proxy in development - automatically launches Vite dev server
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    app.UseSpa(spa =>
+    {
+        spa.Options.SourcePath = "client-app";
+    });
+}
 
 // In-memory activity database
 var activities = new Dictionary<string, Activity>
@@ -81,5 +97,8 @@ app.MapPost("/api/activities/{activityName}/signup", (string activityName, Signu
     return Results.Ok(new { message = $"Signed up {request.Email} for {activityName}" });
 })
     .WithName("SignupForActivity");
+
+// SPA fallback - serve index.html for client-side routes
+app.MapFallbackToFile("index.html");
 
 app.Run();

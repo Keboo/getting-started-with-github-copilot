@@ -1,4 +1,4 @@
-@MergingtonHighSchool_HostAddress = http://localhost:5159
+@MergingtonHighSchool_HostAddress = http://localhost:5000
 
 GET {{MergingtonHighSchool_HostAddress}}/weatherforecast/
 Accept: application/json
