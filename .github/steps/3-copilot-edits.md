@@ -38,7 +38,7 @@ Let's use Copilot Agent Mode to change the website to display signed up students
 
 1. At the bottom of Copilot Chat window, use the dropdown to switch to **Agent** mode.
 
-   <img width="350" alt="image" src="https://github.com/user-attachments/assets/646fc94a-7d60-4821-b9cf-9ec6f4fd03d7" />
+   <img width="350" alt="image" src="https://github.com/user-attachments/assets/201c57bc-8e15-4666-939c-118aeeadbe75" />
 
 1. **Don't** add any files to context! Agent mode will explore and find the relevant files automatically.
 
