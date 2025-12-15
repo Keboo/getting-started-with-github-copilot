@@ -5,7 +5,9 @@ on:
     branches:
       - "accelerate-with-copilot"
     paths:
-      - "src/static/**"
+      - "client-app/src/**"
+  workflow_dispatch:
+  
 
 permissions:
   contents: read
@@ -61,7 +63,7 @@ jobs:
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
-          text-file: src/static/app.js
+          text-file: client-app/src/App.tsx
           keyphrase: participant
           minimum-occurrences: 3
           case-sensitive: false
@@ -71,7 +73,7 @@ jobs:
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
-          text-file: src/static/styles.css
+          text-file: client-app/src/App.css
           keyphrase: participant
           minimum-occurrences: 1
           case-sensitive: false

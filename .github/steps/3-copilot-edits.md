@@ -1,76 +1,70 @@
-## Step 3: Getting work done even _faster_ with Copilot Edit Mode
+## Step 3: Getting work done even _faster_ with Copilot Agent Mode
 
-In our previous steps, we used features of Copilot that require more hands-on guidance and they produced mostly localized results. Now, we will explore Copilot **Edit Mode**, a feature that allows working more holistically on our repo.
+In our previous steps, we used features of Copilot that require more hands-on guidance and they produced mostly localized results. Now, we will explore Copilot **Agent Mode**, a feature that allows Copilot to work autonomously across your entire codebase.
 
-### 📖 Theory: Copilot Edit Mode
+### 📖 Theory: Copilot Agent Mode
 
 Copilot **Edit Mode** and **Agent Mode** both let you apply **natural‑language** driven changes across **multiple files**, however there are some differences between them.
 
-In this step we will focus on **Edit Mode** and explore **Agent Mode** in the next step.
+In this step we will focus on **Agent Mode**, which is perfect for exploratory tasks where you want Copilot to autonomously figure out what needs to change.
 
-Edit Mode is best used for **well defined** tasks where you **know the scope** of the needed changes.
+Agent Mode is best used for **open-ended** tasks where Copilot should **explore and discover** the needed changes across your codebase.
 
-#### How Edit Mode works
+#### How Agent Mode works
 
 ```mermaid
 flowchart LR
-   A[Select Context Files] --> B[Prompt Copilot]
-   B --> C[Proposed Changes]
-   C --> D{Review Change}
-   D --> E[Accept]
-   D --> F[Discard]
-   D -->|Refine Prompt| B
-
+   A[Describe Task] --> B[Copilot Explores Codebase]
+   B --> C[Identifies Files]
+   C --> D[Proposes Changes]
+   D --> E{Review Changes}
+   E --> F[Accept]
+   E --> G[Discard]
+   E -->|Provide Feedback| A
 ```
 
-1. **Set Context**: Select files that Copilot should consider in it's changes
-1. **Prompt Copilot**: Use natural language to describe the required changes.
-1. **Review Changes**: See proposed changes in-place in your code.
+1. **Describe Task**: Tell Copilot what you want to accomplish in natural language.
+1. **Autonomous Exploration**: Copilot explores your codebase to understand the context.
+1. **Smart Discovery**: Copilot identifies which files need changes without you specifying them.
+1. **Review Changes**: See proposed changes across multiple files.
 1. **Accept or Discard**: Review each suggested edit and choose which to keep.
 1. **Iterate**: If needed, provide follow-up instructions to refine the changes.
 
-### :keyboard: Activity: Use Copilot to add a new feature! :rocket:
+### :keyboard: Activity: Use Copilot Agent Mode to add a new feature! :rocket:
 
 Our website lists activities, but it's keeping the guest list secret 🤫 
 
-Let's use Copilot to change the website to display signed up students under each activity!
+Let's use Copilot Agent Mode to change the website to display signed up students under each activity!
 
-1. At the bottom of Copilot Chat window, use the dropdown to switch to **Edit** mode.
+1. At the bottom of Copilot Chat window, use the dropdown to switch to **Agent** mode.
 
    <img width="350" alt="image" src="https://github.com/user-attachments/assets/646fc94a-7d60-4821-b9cf-9ec6f4fd03d7" />
 
-1. Open the files related to our webpage then drag each editor window (or file) to the chat panel, informing Copilot to use them as context.
+1. **Don't** add any files to context! Agent mode will explore and find the relevant files automatically.
 
-   - `src/client-app/src/App.js`
-   - `src/client-app/src/App.css`
+   > 💡 **Tip:** Agent mode works best when you let Copilot discover what needs to change. You can still use the **Add Context...** button if you want to provide additional context like a GitHub issue or specific guidelines, but file discovery is handled automatically.
 
-   <img width="400" alt="image showing files added to context" src="https://github.com/user-attachments/assets/8026a86b-b350-4b98-bf4f-764b61d157e7" />
-
-   > 💡 **Tip:** You can also use the **Add Context...** button to provide other sources of context items, like a GitHub issue, the entire codebase, or the results of a terminal window.
-
-1. Ask Copilot to update our project to display the current participants of activities. Wait a moment for the edit suggestions to arrive and be applied.
+1. Ask Copilot to update our project to display the current participants of activities. Wait for Copilot to explore your codebase and propose changes.
 
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
    > ```prompt
-   > Hey Copilot, can you please edit the activity cards to add a participants section.
-   > It will show what participants that are already signed up for that activity as a bulleted list.
+   > Hey Copilot, can you please update the activity cards to add a participants section?
+   > It should show the participants that are already signed up for that activity as a bulleted list.
    > Remember to make it pretty!
    > ```
 
-   - An extra icon has appeared next to the file names and open editor windows indicating they have suggested edits.
-   - A suggested edits panel has appeared in the bottom right of the editor window providing controls to jump to the recommended changes.
-
-      <img width="200" alt="files with icons indicating they have been edited" src="https://github.com/user-attachments/assets/9c7c2e10-cd18-43c5-9947-cffd6dde0473" />
+   - Watch as Copilot explores your codebase and identifies which files need to be modified.
+   - Copilot will show you its thought process and which files it's examining.
+   - A suggested edits panel will appear in the bottom right of the editor window providing controls to jump to the recommended changes.
 
       <img width="250" alt="edit navigation panel" src="https://github.com/user-attachments/assets/a84965a5-2f43-4c93-a814-0fdeb3a06494" />
-
 
 1. Before we simply accept the changes, please check our website again and verify everything is updated as expected. Here is an example of an updated activity card. You may need to restart the app or refresh the page.
 
    <img width="350" alt="Activity card with participant info" src="https://github.com/user-attachments/assets/c4d56187-4791-4c8e-87d7-d5ce7cdc0bee" />
 
-   > 🪧 **Note:** Your activity card may look different. Copilot won't always produce the same results.
+   > 🪧 **Note:** Your activity card may look different. Copilot won't always produce the same results. Also notice that Copilot Agent mode may have modified different files than you expected - that's the power of autonomous exploration!
 
    <details>
    <summary>Need help? 🤷</summary><br/>
@@ -84,7 +78,7 @@ Let's use Copilot to change the website to display signed up students under each
 
 1. Now that we have confirmed our changes are good, use the panel to cycle through each suggested edit and press **Keep** to apply the change.
 
-   > 💡 **Tip:** You can accept the changes directly, modify them, or provide additional instruction to refine them using the chat interface.
+   > 💡 **Tip:** Agent mode might have found and modified files you didn't expect. Review all changes carefully to understand what Copilot discovered and changed.
 
 1. With our new feature complete, please **commit** and **push** the changes to GitHub.
 
@@ -96,7 +90,7 @@ Let's use Copilot to change the website to display signed up students under each
 
 If you don't get feedback, here are some things to check:
 
-- Make sure your commit the changes in the `src/client-app/src/` directory to the branch `accelerate-with-copilot` and pushed/synchronized to GitHub.
+- Make sure your commit the changes in the `client-app/src/` directory to the branch `accelerate-with-copilot` and pushed/synchronized to GitHub.
 - If Mona found a mistake, simply make a correction and push your changes again. Mona will check your work as many times as needed.
 
 </details>

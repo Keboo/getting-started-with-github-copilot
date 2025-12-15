@@ -6,8 +6,8 @@
       "version": "20"
     }
   },
-  "forwardPorts": [5000, 3000],
-  "postCreateCommand": "cd src/client-app && npm install",
+  "forwardPorts": [5173, 5000],
+  "postCreateCommand": "dotnet dev-certs https --trust && cd src/client-app && npm install",
   "customizations": {
     "vscode": {
       "extensions": [
