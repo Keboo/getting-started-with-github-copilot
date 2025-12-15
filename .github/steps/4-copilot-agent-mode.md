@@ -6,16 +6,6 @@ Copilot [agent mode](https://code.visualstudio.com/docs/copilot/chat/chat-agent-
 
 Copilot Agent Mode responds to compile and lint errors, monitors terminal and test output, and auto-corrects in a loop until the task is completed.
 
-#### Edit Mode vs Agent Mode (at a glance)
-
-| Aspect         | ✏️ Edit Mode                      | 👩‍🚀 Agent Mode                                                                    |
-| -------------- | --------------------------------- | -------------------------------------------------------------------------------- |
-| Context scope  | Only the files you explicitly add | May read/add additional files & surfaces as needed                               |
-| Self‑review    | Minimal (you drive iteration)     | Built‑in feedback & retry loop on errors/failures                                |
-| Change scope   | Highly scoped & surgical          | Broader; may touch related layers for consistency                                |
-| When to choose | You know exactly what to change   | Goal is broader or uncertain; requires exploration                               |
-| Tool calling   | None (you run commands manually)  | Can invoke tools (read/edit files, run commands, inspect terminal & test output) |
-
 #### 🧰 Agent Mode Tools
 
 Agent mode uses tools to accomplish specialized tasks while processing a user request. Examples of such tasks are:

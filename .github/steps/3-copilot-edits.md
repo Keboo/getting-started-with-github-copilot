@@ -10,6 +10,17 @@ In this step we will focus on **Agent Mode**, which is perfect for exploratory t
 
 Agent Mode is best used for **open-ended** tasks where Copilot should **explore and discover** the needed changes across your codebase.
 
+#### Edit Mode vs Agent Mode (at a glance)
+
+| Aspect         | ✏️ Edit Mode                      | 👩‍🚀 Agent Mode                                                                    |
+| -------------- | --------------------------------- | -------------------------------------------------------------------------------- |
+| Context scope  | Only the files you explicitly add | May read/add additional files & surfaces as needed                               |
+| Self‑review    | Minimal (you drive iteration)     | Built‑in feedback & retry loop on errors/failures                                |
+| Change scope   | Highly scoped & surgical          | Broader; may touch related layers for consistency                                |
+| When to choose | You know exactly what to change   | Goal is broader or uncertain; requires exploration                               |
+| Tool calling   | None (you run commands manually)  | Can invoke tools (read/edit files, run commands, inspect terminal & test output) |
+
+
 #### How Agent Mode works
 
 ```mermaid
