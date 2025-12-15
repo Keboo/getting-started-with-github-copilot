@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Configure Kestrel to listen on port 5000
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenLocalhost(5000);
+    options.Listen(System.Net.IPAddress.Any, 5000);
 });
 
 // Add services to the container.

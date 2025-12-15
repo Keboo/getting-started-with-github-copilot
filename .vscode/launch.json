@@ -23,23 +23,6 @@
       "sourceFileMap": {
         "/Views": "${workspaceFolder}/Views"
       }
-    },
-    {
-      "name": "Launch React Dev Server",
-      "type": "node",
-      "request": "launch",
-      "cwd": "${workspaceFolder}/src/client-app",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["start"],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-    }
-  ],
-  "compounds": [
-    {
-      "name": "Launch Full Stack",
-      "configurations": ["Launch Mergington WebApp", "Launch React Dev Server"],
-      "stopAll": true
     }
   ]
 }
