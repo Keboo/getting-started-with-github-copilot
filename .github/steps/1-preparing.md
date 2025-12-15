@@ -81,9 +81,9 @@ Let's start up our development environment, use copilot to learn a bit about the
 
 1. Now that we know a bit more about the project, let's actually try running it! In the left sidebar, select the `Run and Debug` tab and then select **Launch Mergington WebApp** from the dropdown, then press the **Start Debugging** icon.
 
-   <img width="300" alt="image" src="https://github.com/user-attachments/assets/50b27f2a-5eab-4827-9343-ab5bce62357e" />
+   <img width="300" alt="image" src="https://github.com/user-attachments/assets/36df6248-55b7-4176-b379-12b050abf5af" />
 
-1. We want to see our webpage running in a browser, so let's find the url and port. If it isn't visible, expand the lower panel and select the **Ports** tab.
+1. We want to see our webpage running in a browser, so let's find the url and port. If you are running locally it will be output to the terminal, and be on http://localhost:5000. If it isn't visible, expand the lower panel and select the **Ports** tab.
 
 1. In the list, find port `5000` and the related link. Hover over the link and select the **Open in browser** icon.
 
