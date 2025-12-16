@@ -12,31 +12,50 @@ Typically, you would review your notes and commit messages then summarize them f
 
 More eyes on our work is always useful so let's ask Copilot to do a first pass before we do a normal peer review process. Copilot is great at catching common mistakes that are fixed by simple adjustments, but please remember to use it responsibly.
 
-> [!NOTE]
-> These features are only available on paid plans of **GitHub Copilot**. [[docs]](https://docs.github.com/en/copilot/get-started/plans)
+### :keyboard: Activity: Create and manage a PR using the GitHub MCP server
 
-### :keyboard: Activity: Summarize and review a PR with Copilot
+Though there are browser based flows for having copilot create a PR, we'll use the **GitHub MCP server** to create and manage pull requests directly from VS Code using Copilot. This demonstrates how Model Context Protocol servers can extend Copilot's capabilities.
 
-Both **Copilot pull request summaries** and **Copilot code review** have limited access, so this activity is mostly optional. If you don't have access, skip the optional steps of this activity.
+#### Install and connect the GitHub MCP server
 
-1. In a web browser, open another tab and navigate to your exercise repository.
+1. Open **GitHub Copilot Chat** in VS Code (Ctrl+Shift+I or click the chat icon).
 
-1. You might notice a **notification banner** suggesting to create a new pull request. Click that or use the **Pull Requests** tab at the top to **create a new pull request**. Please use the following details:
+1. Click the **Tools icon** (looks like a wrench and screwdriver) in the chat input area.
 
-   - **base:** `main`
-   - **compare:** `accelerate-with-copilot`
-   - **title:** `Improve student activity registration system`
+1. Click the **MCP icon** (looks like a plug) in search drop down that opens at the top.
 
-1. (Optional) In the PR description toolbar click the **Copilot** icon and **Summary** action. After a moment, Copilot will add a description based on your changes. :memo:
+1. Click **Browser MCP Server** alternatively you can open the Extensions search and query for `@mcp`.
 
-   <img alt="Copilot summarize button " width="450px" src="https://github.com/user-attachments/assets/7a712d8b-484d-41df-9353-bc2b397fc1e0">
+1. Find GitHub in the list and click the Install button.
 
-1. (Optional) In the right side information panel at the top, locate the **Reviewers** section and click the **Request** button next to a **Copilot icon**. Wait a moment for Copilot to add a review comment to your pull request!
+1. When prompted for a PAT, either provide one, or simply enter blank to prompt the extension to authenticate with OAuth.
 
-   <img alt="Copilot review button" width="300px" src="https://github.com/user-attachments/assets/39b15002-a235-4c25-b09d-6a8097e27b62">
+#### Create the pull request using Copilot
 
-   > 💡 **Tip:** Notice a log entry that Copilot was requested for a review.
+Now that the GitHub MCP server is connected, you can use Copilot to create and manage pull requests through natural language prompts:
 
-1. At the bottom, press the **Merge pull request** button. Nice work! You are all done! :tada:
+1. Open **GitHub Copilot Chat** in VS Code (Ctrl+Shift+I or click the chat icon).
+
+1. Use the following prompt to create your pull request:
+   ```
+   @github create a pull request from branch "accelerate-with-copilot" to "main" with the title "Improve student activity registration system"
+   ```
+
+1. (Optional) If you have access to **Copilot pull request summaries**, use this prompt to generate a description:
+   ```
+   @github generate a summary for the pull request I just created
+   ```
+
+1. (Optional) If you have access to **Copilot code review**, request a review:
+   ```
+   @github request a Copilot review on the open pull request
+   ```
+
+1. Once you've reviewed the changes, merge the pull request with this prompt:
+   ```
+   @github merge the pull request from accelerate-with-copilot to main
+   ```
+
+   Nice work! You are all done! :tada:
 
 1. Wait a moment for Mona to check your work, provide feedback, and post a final review of this exercise!
